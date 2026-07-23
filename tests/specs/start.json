@@ -7,10 +7,18 @@
         "expect": [
           {
             "method": "sendMessage",
-            "payload": { "text": "👋 Welcome! Tap a button below to get started." }
+            "payload": { "text": "NFT alerts for verified projects.\nEthereum • Solana • Base.\nAuto-follow trending: on." }
           }
         ]
       }
+    ]
+  },
+  {
+    "name": "end-to-end onboarding flow",
+    "steps": [
+      { "send": { "text": "/start" }, "expect": [ { "method": "sendMessage" } ] },
+      { "send": { "callback": "prefs:toggle_auto" }, "expect": [ { "method": "editMessageText" } ] },
+      { "send": { "callback": "follow:start" }, "expect": [ { "method": "sendMessage" } ] }
     ]
   }
 ]

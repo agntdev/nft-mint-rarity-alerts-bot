@@ -7,7 +7,7 @@
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Subscribe to project by contract/address, keyword, or creator handle"
+              "text": "Send contract address, keyword or creator handle (e.g. 0x123... or azuki or @creator)."
             }
           }
         ],
@@ -15,6 +15,14 @@
           "text": "/follow"
         }
       }
+    ]
+  },
+  {
+    "name": "follow by keyword via button and input",
+    "steps": [
+      { "send": { "text": "/start" }, "expect": [{ "method": "sendMessage" }] },
+      { "send": { "callback": "follow:start" }, "expect": [{ "method": "sendMessage" }] },
+      { "send": { "text": "azuki" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Subscribed to azuki.\nAlerts enabled for all types." } }] }
     ]
   }
 ]
