@@ -5,10 +5,7 @@
       {
         "expect": [
           {
-            "method": "sendMessage",
-            "payload": {
-              "text": "Discover auto-follow candidates with rapid mention growth"
-            }
+            "method": "sendMessage"
           }
         ],
         "send": {

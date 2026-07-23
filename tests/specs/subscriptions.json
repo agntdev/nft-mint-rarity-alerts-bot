@@ -7,7 +7,7 @@
           {
             "method": "sendMessage",
             "payload": {
-              "text": "View and manage active subscriptions with per-type toggles"
+              "text": "No subscriptions yet — tap ➕ Follow to add one."
             }
           }
         ],
@@ -15,6 +15,27 @@
           "text": "/subscriptions"
         }
       }
+    ]
+  },
+  {
+    "name": "subscription toggle state persistence",
+    "steps": [
+      { "send": { "text": "/start" }, "expect": [{ "method": "sendMessage" }] },
+      { "send": { "callback": "follow:start" }, "expect": [{ "method": "sendMessage" }] },
+      { "send": { "text": "0x1234567890123456789012345678901234567890 eth" }, "expect": [{ "method": "sendMessage" }] },
+      { "send": { "callback": "subscriptions:show" }, "expect": [{ "method": "editMessageText" }] },
+      { "send": { "callback": "sub:toggle:sub_123:rarity" }, "expect": [{ "method": "editMessageText" }] },
+      { "send": { "callback": "subscriptions:show" }, "expect": [{ "method": "editMessageText" }] }
+    ]
+  },
+  {
+    "name": "verified tag rendering",
+    "steps": [
+      { "send": { "text": "/start" }, "expect": [{ "method": "sendMessage" }] },
+      { "send": { "callback": "follow:start" }, "expect": [{ "method": "sendMessage" }] },
+      { "send": { "text": "azuki" }, "expect": [{ "method": "sendMessage" }] },
+      { "send": { "callback": "subscriptions:show" }, "expect": [{ "method": "editMessageText" }] },
+      { "send": { "callback": "alert:test" }, "expect": [{ "method": "sendMessage", "payload": { "text": "🔔 early mint for ✅ Verified azuki" } } ] }
     ]
   }
 ]
