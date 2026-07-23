@@ -1,0 +1,20 @@
+[
+  {
+    "name": "/subscriptions",
+    "steps": [
+      {
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "View and manage active subscriptions with per-type toggles"
+            }
+          }
+        ],
+        "send": {
+          "text": "/subscriptions"
+        }
+      }
+    ]
+  }
+]
